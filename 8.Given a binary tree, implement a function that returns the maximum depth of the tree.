@@ -1,0 +1,11 @@
+enum Tree<T> {
+    Node(T, Box<Tree<T>>, Box<Tree<T>>),
+    Leaf,
+}
+
+fn max_depth<T>(tree: &Tree<T>) -> usize {
+    match tree {
+        Tree::Node(_, left, right) => 1 + std::cmp::max(max_depth(left), max_depth(right)),
+        Tree::Leaf => 0,
+    }
+}
