@@ -1,0 +1,24 @@
+fn longest_common_prefix(strings: &[&str]) -> String {
+    let mut prefix = String::new();
+    let mut chars = strings.iter().map(|s| s.chars());
+
+    loop {
+        let mut char_iter = chars.next();
+        if char_iter.is_none() {
+            break;
+        }
+        let c = char_iter.unwrap().next();
+        if c.is_none() {
+            break;
+        }
+        let c = c.unwrap();
+        for char_iter in chars.iter_mut() {
+            if char_iter.next().unwrap()!= c {
+                return prefix;
+            }
+        }
+        prefix.push(c);
+    }
+
+    prefix
+}
