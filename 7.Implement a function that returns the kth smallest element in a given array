@@ -1,0 +1,5 @@
+fn kth_smallest(arr: &[i32], k: usize) -> Option<i32> {
+    let mut arr = arr.to_vec();
+    arr.sort_unstable();
+    arr.get(k - 1).cloned()
+}
